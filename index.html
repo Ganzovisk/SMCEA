@@ -130,11 +130,14 @@
             border-radius: 5px;
         }
 
-        .form-area {
+        /* Área do formulário POWR */
+        #form-section {
             flex: 1;
-            overflow-y: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 20px;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
         }
     </style>
 </head>
@@ -167,15 +170,18 @@
             </ul>
         </div>
 
-        <!-- Local onde o POWR será carregado -->
-        <div class="form-area" id="formContainer"></div>
+        <!-- Formulário POWR -->
+        <div id="form-section">
+            <div class="powr-hipaa-form" id="4cc4d818_1762288307"></div>
+        </div>
+        <script src="https://www.powr.io/powr.js?platform=html"></script>
     </div>
 
     <script>
         function validateLogin(event) {
             event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
 
             const users = {
                 "Geoconcret": "12345",
@@ -187,15 +193,6 @@
             if (users[username] && users[username] === password) {
                 document.querySelector('.login-screen').style.display = 'none';
                 document.querySelector('.main-screen').style.display = 'flex';
-
-                // Adiciona o formulário POWR após login
-                const container = document.getElementById('formContainer');
-                container.innerHTML = `
-                    <div class="powr-hipaa-form" id="4cc4d818_1762288307"></div>
-                `;
-                const script = document.createElement("script");
-                script.src = "https://www.powr.io/powr.js?platform=html";
-                document.body.appendChild(script);
             } else {
                 alert('Usuário ou senha incorretos.');
             }
@@ -206,7 +203,6 @@
             document.querySelector('.login-screen').style.display = 'flex';
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-            document.getElementById('formContainer').innerHTML = '';
         }
     </script>
 
