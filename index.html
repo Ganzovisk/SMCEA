@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CEA - Login e Formulário</title>
+
   <style>
     body {
       margin: 0;
@@ -131,11 +132,20 @@
       border-radius: 5px;
     }
 
-    /* IFRAME ocupa toda a tela abaixo do menu */
-    iframe {
-      width: 100vw;
-      min-width: 100%;
-      height: 100vh;
+    /* ======== FORM EMBED ======== */
+    .form-container {
+      width: 100%;
+      height: calc(100vh - 150px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .form-container iframe {
+      position: absolute;
+      top: -60px; /* desloca pra cima pra esconder o cabeçalho verde */
+      left: 0;
+      width: 100%;
+      height: calc(100% + 60px);
       border: none;
     }
   </style>
@@ -159,7 +169,7 @@
   <div class="main-screen" id="mainScreen">
     <div class="header">
       <img src="CEASLOGAN3.png" alt="CEA Logo" style="max-width: 150px;">
-      <h1>Sugestões de Melhoria</h1>
+      <h1>Sugestão de Melhorias</h1>
     </div>
 
     <div class="navbar">
@@ -169,17 +179,45 @@
       </ul>
     </div>
 
-    <!-- FORMULÁRIO DO FORMS.APP -->
-    <iframe id="meuForm"
+    <!-- EMBED JOTFORM (sem parte verde) -->
+  <!-- ======== TABELA JOTFORM (ocultando cabeçalho e footer) ======== -->
+
+
+    <iframe
+      id="JotFormIFrame-253104951014042"
+      title="Reporte"
+      onload="window.parent.scrollTo(0,0)"
       allowtransparency="true"
-      allowfullscreen="true"
-      allow="geolocation; microphone; camera"
-      src="https://1isbwpvx.forms.app/form/690b69c187bfb50002bbb715"
-      frameborder="0">
+      allow="geolocation; microphone; camera; fullscreen; payment"
+      src="https://form.jotform.com/253104951014042"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no"
+    >
     </iframe>
-  </div>
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-253104951014042']", "https://form.jotform.com/")</script>
+    
+    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-253104951014042']", "https://form.jotform.com/")</script>
+    
+
+<script>
+(function(doc, id){
+  var scripts = doc.getElementsByTagName("script")[0];
+  if (!doc.getElementById(id)){
+    var script = doc.createElement("script");
+    script.async = 1;
+    script.id = id;
+    script.src = "https://cdn.jotfor.ms/s/umd/latest/for-sheets-embed.js";
+    scripts.parentNode.insertBefore(script, scripts);
+  }
+})(document, "jotform-async");
+</script>
+
 
   <script>
+    // === Lógica de Login ===
     function validateLogin(event) {
       event.preventDefault();
       const username = document.getElementById('username').value.trim();
@@ -200,6 +238,7 @@
       }
     }
 
+    // === Logout ===
     function logout() {
       document.querySelector('.main-screen').style.display = 'none';
       document.querySelector('.login-screen').style.display = 'flex';
@@ -210,4 +249,3 @@
 
 </body>
 </html>
-
