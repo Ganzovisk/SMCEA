@@ -125,27 +125,23 @@
       color: #ffffff;
       padding: 10px;
       transition: background-color 0.3s;
+      border-radius: 5px;
     }
 
     .navbar ul li a:hover {
       background-color: #006b9f;
-      border-radius: 5px;
     }
 
-    /* ======== FORM EMBED ======== */
+    /* ======== FORM ======== */
     .form-container {
       width: 100%;
-      height: calc(100vh - 150px);
+      min-height: 80vh;
       overflow: hidden;
       position: relative;
     }
 
     .form-container iframe {
-      position: absolute;
-      top: -60px; /* desloca pra cima pra esconder o cabeçalho verde */
-      left: 0;
       width: 100%;
-      height: calc(100% + 60px);
       border: none;
     }
   </style>
@@ -174,47 +170,34 @@
 
     <div class="navbar">
       <ul>
-        <li><a href="#">Minha Área de Trabalho</a></li>
+        <li><a href="#" style="background-color:#006b9f;">Minha Área de Trabalho</a></li>
+        <li><a href="relatorio.html">Relatórios</a></li>
         <li><a href="#" onclick="logout()">Sair</a></li>
       </ul>
     </div>
 
-    <!-- EMBED JOTFORM (sem parte verde) -->
-  <!-- ======== TABELA JOTFORM (ocultando cabeçalho e footer) ======== -->
+    <!-- FORMULÁRIO JOTFORM -->
+    <div class="form-container">
+      <iframe
+        id="JotFormIFrame-253104951014042"
+        title="Reporte"
+        allowtransparency="true"
+        allow="geolocation; microphone; camera; fullscreen; payment"
+        src="https://form.jotform.com/253104951014042"
+        frameborder="0"
+        scrolling="no">
+      </iframe>
+    </div>
+  </div>
 
-
-    <iframe
-      id="JotFormIFrame-253104951014042"
-      title="Reporte"
-      onload="window.parent.scrollTo(0,0)"
-      allowtransparency="true"
-      allow="geolocation; microphone; camera; fullscreen; payment"
-      src="https://form.jotform.com/253104951014042"
-      frameborder="0"
-      style="min-width:100%;max-width:100%;height:539px;border:none;"
-      scrolling="no"
-    >
-    </iframe>
-    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
-    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-253104951014042']", "https://form.jotform.com/")</script>
-    
-    <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
-    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-253104951014042']", "https://form.jotform.com/")</script>
-    
-
-<script>
-(function(doc, id){
-  var scripts = doc.getElementsByTagName("script")[0];
-  if (!doc.getElementById(id)){
-    var script = doc.createElement("script");
-    script.async = 1;
-    script.id = id;
-    script.src = "https://cdn.jotfor.ms/s/umd/latest/for-sheets-embed.js";
-    scripts.parentNode.insertBefore(script, scripts);
-  }
-})(document, "jotform-async");
-</script>
-
+  <!-- Script que ajusta automaticamente a altura -->
+  <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
+  <script>
+    window.jotformEmbedHandler(
+      "iframe[id='JotFormIFrame-253104951014042']",
+      "https://form.jotform.com/"
+    );
+  </script>
 
   <script>
     // === Lógica de Login ===
