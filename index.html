@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CEA - Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    /* LOGIN */
+    .login-screen {
+      background: linear-gradient(135deg, #6dd5fa, #2980b9);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 40px;
+      width: 350px;
+      border-radius: 15px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .login-container img {
+      display: block;
+      margin: 0 auto 30px;
+      width: 100%;
+      max-width: 250px;
+      height: auto;
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 15px;
+      background-color: #2980b9;
+      border: none;
+      color: white;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #3498db;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container a {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #2980b9;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <div class="login-screen">
+    <div class="login-container">
+
+      <img src="CEA SLOGAN.jpg" alt="CEA Slogan">
+
+      <form onsubmit="return validateLogin(event)">
+
+        <!-- INPUT 1 (mantendo EXACTAMENTE seu CSS do VisBug) -->
+        <input 
+          type="text" 
+          id="username" 
+          placeholder="Usuário" 
+          required
+          style="
+            padding: 15px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            width: 303px;
+            position: relative;
+            left: 5px;
+            top: -16px;
+          "
+        >
+
+        <!-- INPUT 2 (mantendo EXACTAMENTE seu CSS do VisBug) -->
+        <input 
+          type="password" 
+          id="password" 
+          placeholder="Senha" 
+          required
+          style="
+            padding: 15px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+            width: 303px;
+            position: relative;
+            left: 5px;
+            top: -16px;
+          "
+        >
+
+        <button type="submit">Entrar</button>
+        <a href="#">Esqueceu sua senha?</a>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- LOGIN SCRIPT -->
+  <script>
+    function validateLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const users = {
+        "Geoconcret": "12345",
+        "CEA": "12345",
+        "AKMOS": "12345",
+        "ARDO": "12345"
+      };
+
+      if (users[username] && users[username] === password) {
+
+        // Marca login autorizado
+        localStorage.setItem("loggedIn", "true");
+
+        // Redireciona para pag1
+        window.location.href = "pag1.html";
+
+      } else {
+        alert('Usuário ou senha incorretos.');
+      }
+    }
+  </script>
+
+</body>
+</html>
