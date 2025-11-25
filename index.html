@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEA - Área de Trabalho</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f3f3fc;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: #256fa7;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      width: 100%;
+      background-color: #1F6FA3;
+      padding: 0;
+      border-top: 3px solid white;
+    }
+
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .navbar ul li a {
+      display: block;
+      padding: 14px 25px;
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 16px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar ul li a.active,
+    .navbar ul li a:hover {
+      background-color: #006b9f;
+    }
+
+    /* FORM CONTAINER */
+    .form-container {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      min-height: calc(100vh - 260px);
+      margin-top: 20px;
+    }
+
+    /* Overlay azul cobrindo footer do JotForm */
+    .jotform-footer-cover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #f3f3fc;
+      z-index: 99;
+      pointer-events: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- BLOQUEIO DE LOGIN -->
+  <script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+
+  <div class="header">
+    <img src="CEASLOGAN3.png" alt="CEA Logo" style="max-width: 150px;">
+    <h1>MANAUS I - LIÇÕES APRENDIDAS</h1>
+  </div>
+
+  <div class="navbar">
+    <ul>
+      <li><a href="index.html" class="active">Minha Área de Trabalho</a></li>
+      <li><a href="relatorio.html">Relatórios</a></li>
+      <li><a href="#" onclick="logout()">Sair</a></li>
+    </ul>
+  </div>
+
+  <div class="form-container">
+
+    <!-- 🔄 NOVO IFRAME SUBSTITUÍDO -->
+    <iframe
+      id="JotFormIFrame-253275184951059"
+      title="Form"
+      onload="window.parent.scrollTo(0,0)"
+      allowtransparency="true"
+      allow="geolocation; microphone; camera; fullscreen; payment"
+      src="https://form.jotform.com/253275184951059"
+      frameborder="0"
+      style="min-width:100%;max-width:100%;height:539px;border:none;"
+      scrolling="no">
+    </iframe>
+
+    <div class="jotform-footer-cover"></div>
+  </div>
+
+  <script src='https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js'></script>
+  <script>
+    window.jotformEmbedHandler(
+      "iframe[id='JotFormIFrame-253275184951059']",
+      "https://form.jotform.com/"
+    );
+  </script>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "login.html";
+    }
+  </script>
+
+</body>
+</html>
