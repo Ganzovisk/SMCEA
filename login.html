@@ -11,7 +11,6 @@
       font-family: 'Arial', sans-serif;
     }
 
-    /* LOGIN */
     .login-screen {
       background: linear-gradient(135deg, #6dd5fa, #2980b9);
       height: 100vh;
@@ -72,7 +71,6 @@
 </head>
 <body>
 
-  <!-- LOGIN -->
   <div class="login-screen">
     <div class="login-container">
 
@@ -80,44 +78,20 @@
 
       <form onsubmit="return validateLogin(event)">
 
-        <!-- INPUT 1 (mantendo EXACTAMENTE seu CSS do VisBug) -->
         <input 
           type="text" 
           id="username" 
           placeholder="Usuário" 
           required
-          style="
-            padding: 15px;
-            margin: 10px 0 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            width: 303px;
-            position: relative;
-            left: 5px;
-            top: -16px;
-          "
+          style="padding: 15px; margin: 10px 0 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; width: 303px; position: relative; left: 5px; top: -16px;"
         >
 
-        <!-- INPUT 2 (mantendo EXACTAMENTE seu CSS do VisBug) -->
         <input 
           type="password" 
           id="password" 
           placeholder="Senha" 
           required
-          style="
-            padding: 15px;
-            margin: 10px 0 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-            width: 303px;
-            position: relative;
-            left: 5px;
-            top: -16px;
-          "
+          style="padding: 15px; margin: 10px 0 20px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; width: 303px; position: relative; left: 5px; top: -16px;"
         >
 
         <button type="submit">Entrar</button>
@@ -127,7 +101,6 @@
     </div>
   </div>
 
-  <!-- LOGIN SCRIPT -->
   <script>
     function validateLogin(event) {
       event.preventDefault();
@@ -142,8 +115,14 @@
         "ARDO": "12345"
       };
 
+      if (users[username] === password) {
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "index.html";
+      } else {
+        alert("Usuário ou senha incorretos!");
+      }
+    }
   </script>
 
 </body>
 </html>
-
