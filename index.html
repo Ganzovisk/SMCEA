@@ -12,7 +12,6 @@
       background-color: #f3f3fc;
     }
 
-    /* HEADER */
     .header {
       background-color: #256fa7;
       color: white;
@@ -23,7 +22,6 @@
       padding: 20px;
     }
 
-    /* NAVBAR */
     .navbar {
       width: 100%;
       background-color: #1F6FA3;
@@ -52,7 +50,6 @@
       background-color: #006b9f;
     }
 
-    /* FORM CONTAINER */
     .form-container {
       width: 100%;
       position: relative;
@@ -61,7 +58,6 @@
       margin-top: 20px;
     }
 
-    /* Overlay azul cobrindo footer do JotForm */
     .jotform-footer-cover {
       position: absolute;
       bottom: 0;
@@ -77,11 +73,9 @@
 
 <body>
 
-  <!-- BLOQUEIO DE LOGIN -->
+  <!-- LOGIN DESATIVADO PARA APRESENTAÇÃO -->
   <script>
-    if (localStorage.getItem("loggedIn") !== "true") {
-      window.location.href = "login.html";
-    }
+    localStorage.setItem("loggedIn", "true");
   </script>
 
   <div class="header">
@@ -99,7 +93,6 @@
 
   <div class="form-container">
 
-    <!-- 🔄 NOVO IFRAME SUBSTITUÍDO -->
     <iframe
       id="JotFormIFrame-253275184951059"
       title="Form"
@@ -122,6 +115,11 @@
       "https://form.jotform.com/"
     );
 
+    function logout() {
+      localStorage.removeItem("loggedIn");
+      window.location.href = "login.html";
+    }
+  </script>
+
 </body>
 </html>
-
